@@ -1,0 +1,43 @@
+﻿@using AppNetCore01.Models;
+@model Producto
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<form method="post" asp-controller="Producto" asp-action="Edit">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Editar Producto</h2>
+        </div>
+        <input type="hidden" asp-for="idProducto" />
+        <input type="hidden" asp-for="idMarca" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="mb-3">
+            <label asp-for="descripcion" class="form-label"></label>
+            <input asp-for="descripcion" class="form-control" />
+            <span asp-validation-for="descripcion" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="codigo" class="form-label"></label>
+            <input asp-for="codigo" class="form-control" />
+            <span asp-validation-for="codigo" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-warning mx-3" style="width:200px">
+            <i class="bi bi-floppy"></i> &nbsp;
+
+            Editar
+        </button>
+        <a asp-controller="Producto" asp-action="Index" style="width:200px" class="btn btn-success mx-3">
+            <i class="bi bi-backspace"></i>  &nbsp;
+
+            Volver
+        </a>
+
+    </div>
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}

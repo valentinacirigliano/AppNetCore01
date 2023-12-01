@@ -1,0 +1,69 @@
+﻿@using AppNetCore01.Web.ViewModels;
+@model ProductoEditVm;
+
+@{
+    ViewData["Title"] = "UpSert";
+}
+
+<form method="post" asp-controller="Producto" asp-action="UpSert" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Producto.idProducto" />
+    <div class="border p-3 mt-4 row ">
+        <div class="row">
+            <div class="col-6">
+                <div class="row pb-2">
+                    <h2 class="text-primary">@(Model.Producto.idProducto == 0 ? "Nuevo Producto" : "Editar Producto")</h2>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="Producto.descripcion" class="form-label"></label>
+                    <input asp-for="Producto.descripcion" class="form-control" />
+                    <span asp-validation-for="Producto.descripcion" class="text-danger"></span>
+                </div>
+
+
+            </div>
+            
+        </div>
+        <div class="row">
+			<div class="mb-3  col-6">
+				<label asp-for="Producto.codigo" class="form-label"></label>
+				<input asp-for="Producto.codigo" class="form-control" />
+				<span asp-validation-for="Producto.codigo" class="text-danger"></span>
+			</div>
+        </div>
+        <div class="row">
+			<div class="mb-3 col-6">
+				<label asp-for="Producto.idMarca" class="form-label"></label>
+				<select asp-for="Producto.idMarca" asp-items="Model.Marcas" class="form-select">
+					<option disabled selected>Seleccione Categoría</option>
+				</select>
+				<span asp-validation-for="Producto.idMarca" class="text-danger"></span>
+			</div>
+        </div>
+
+        
+
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-warning" style="width:200px">
+                    <i class="bi bi-floppy"></i> &nbsp;
+                    Guardar
+            </button>
+
+            <a asp-controller="Producto" asp-action="Index" style="width:200px" class="btn btn-success">
+                <i class="bi bi-backspace"></i>  &nbsp;
+                Volver
+            </a>
+
+        </div>
+
+    </div>
+</form>
+@section Scripts
+{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+
+
+}
